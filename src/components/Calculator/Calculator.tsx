@@ -31,6 +31,15 @@ function Calculator() {
 
     // after calc reset
     if (justCalculated) {
+      if (operators.includes(value)) {
+        setNum(num + value); // continua a conta
+      } else {
+        setNum(value); // nova conta
+      }
+      setJustCalculated(false);
+      return;
+    }
+    if (justCalculated) {
       setNum(value);
       setJustCalculated(false);
       return;
@@ -40,7 +49,6 @@ function Calculator() {
       setNum(value);
       return;
     }
-    setNum(value);
 
     // Blocking repetitive operator
     if (operators.includes(value) && operators.includes(lastChar)) {
