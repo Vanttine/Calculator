@@ -3,6 +3,7 @@ import "./Calculator.css";
 
 function Calculator() {
   const [num, setNum] = useState("");
+  const [justCalculated, setJustCalculated] = useState(false);
   const operators = ["+", "-", "x", "÷", "%"];
   const lastChar = num[num.length - 1];
 
@@ -20,9 +21,17 @@ function Calculator() {
           num.replace(/x/g, "*").replace(/÷/g, "/").replace(/,/g, ".")
         );
         setNum(result.toString());
+        setJustCalculated(true);
       } catch {
         setNum("ERRO");
       }
+      return;
+    }
+
+    // after calc reset
+    if (justCalculated) {
+      setNum(value);
+      setJustCalculated(false);
       return;
     }
 
