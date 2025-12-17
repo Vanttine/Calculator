@@ -1,6 +1,44 @@
+import { useState } from "react";
 import "./Calculator.css";
 
 function Calculator() {
+  const [num, setNum] = useState("");
+  const operators = ["+", "-", "x", "÷", "%"];
+  const lastChar = num[num.length - 1];
+
+  function handleClick(value: string) {
+    //Clear
+    if (value === "C") {
+      setNum("");
+      return;
+    }
+
+    // Calculating
+    if (value === "=") {
+      try {
+        const result = eval(
+          num.replace(/x/g, "*").replace(/÷/g, "/").replace(/,/g, ".")
+        );
+        setNum(result.toString());
+      } catch {
+        setNum("ERRO");
+      }
+      return;
+    }
+
+    if (num === "ERRO") {
+      setNum(value);
+      return;
+    }
+    setNum(value);
+
+    // Blocking repetitive operator
+    if (operators.includes(value) && operators.includes(lastChar)) {
+      return;
+    }
+    setNum(num + value);
+  }
+
   return (
     <div className="Calculator">
       <div className="Visor">Resultado</div>
