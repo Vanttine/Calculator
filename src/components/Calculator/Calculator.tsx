@@ -4,6 +4,7 @@ import "./Calculator.css";
 function Calculator() {
   const [num, setNum] = useState("");
   const [justCalculated, setJustCalculated] = useState(false);
+
   const operators = ["+", "-", "x", "÷", "%"];
   const lastChar = num[num.length - 1];
 
@@ -50,24 +51,58 @@ function Calculator() {
 
   return (
     <div className="Calculator">
-      <div className="Visor">Resultado</div>
+      <div className="Visor">{num}</div>
       <div className="Keyboard">
-        <button className="Keys operator">C</button>
-        <button className="Keys operator">D</button>
-        <button className="Keys operator">%</button>
-        <button className="Keys operator">÷</button>
-        <button className="Keys">7</button>
-        <button className="Keys">8</button>
-        <button className="Keys">9</button>
-        <button className="Keys operator">x</button>
-        <button className="Keys">4</button>
-        <button className="Keys">5</button>
-        <button className="Keys">6</button>
-        <button className="Keys operator">-</button>
-        <button className="Keys">1</button>
-        <button className="Keys">2</button>
-        <button className="Keys">3</button>
-        <button className="Keys operator">+</button>
+        <button className="Keys operator" onClick={() => handleClick("C")}>
+          C
+        </button>
+        <button className="Keys operator" onClick={() => handleClick("C")}>
+          D
+        </button>
+        <button className="Keys operator" onClick={() => handleClick("%")}>
+          %
+        </button>
+        <button className="Keys operator" onClick={() => handleClick("÷")}>
+          ÷
+        </button>
+        <button className="Keys" onClick={() => handleClick("7")}>
+          7
+        </button>
+        <button className="Keys" onClick={() => handleClick("8")}>
+          8
+        </button>
+        <button className="Keys" onClick={() => handleClick("9")}>
+          9
+        </button>
+        <button className="Keys operator" onClick={() => handleClick("x")}>
+          x
+        </button>
+        <button className="Keys" onClick={() => handleClick("4")}>
+          4
+        </button>
+        <button className="Keys" onClick={() => handleClick("5")}>
+          5
+        </button>
+        <button className="Keys" onClick={() => handleClick("6")}>
+          6
+        </button>
+        <button className="Keys operator" onClick={() => handleClick("-")}>
+          -
+        </button>
+        <button className="Keys" onClick={() => handleClick("1")}>
+          1
+        </button>
+        <button className="Keys" onClick={() => handleClick("2")}>
+          2
+        </button>
+        <button className="Keys" onClick={() => handleClick("3")}>
+          3
+        </button>
+
+        <button className="Keys operator" onClick={() => handleClick("+")}>
+          +
+        </button>
+
         <button
           className="Keys disabled"
           style={{
@@ -76,9 +111,15 @@ function Calculator() {
             cursor: "default",
           }}
         ></button>
-        <button className="Keys">0</button>
-        <button className="Keys">,</button>
-        <button className="Keys action">=</button>
+        <button className="Keys" onClick={() => handleClick("0")}>
+          0
+        </button>
+        <button className="Keys" onClick={() => handleClick(",")}>
+          ,
+        </button>
+        <button className="Keys action" onClick={() => handleClick("=")}>
+          =
+        </button>
       </div>
     </div>
   );
